@@ -76,7 +76,7 @@ module BasicNamedScopes
       FIND_BOOLEAN_SWITCHES.each do |parameter|
         model.named_scope(parameter, default_to_true(parameter))
       end
-      model.class_eval { alias :unscoped_all :all }
+      model.class_eval { alias_method :unscoped_all, :all }
       model.named_scope(:all, default_to_empty_hash)
     end
 
